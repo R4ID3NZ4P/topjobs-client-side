@@ -32,10 +32,11 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const update = (name) => {
+    const update = (name, photo) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
-            displayName: name
+            displayName: name,
+            photoURL: photo
           });
     }
 
