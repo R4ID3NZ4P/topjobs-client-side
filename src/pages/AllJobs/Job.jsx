@@ -10,7 +10,7 @@ const Job = ({ data }) => {
         postdate,
         deadline
     } = data;
-
+    
     return (
         <tr>
             <th>{username}</th>
