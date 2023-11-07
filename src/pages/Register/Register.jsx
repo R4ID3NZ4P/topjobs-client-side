@@ -17,7 +17,7 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const name = e.target.name.value;
-        const photo = e.target.photo.value;
+        let photo = e.target.photo.value;
 
         const uppercaseError = /(?=.*[A-Z])/;
         const specialCharacterError = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/;
@@ -39,6 +39,7 @@ const Register = () => {
         else register(email, password)
             .then(() => {
                 toast("User successfully registered!");
+                if (photo == "" || photo == undefined) photo = "https://i.ibb.co/FVwc5P9/usericon.png";
                 update(name, photo).then(() => {
                     toast("Please sign in with your new credentials!");
                     logout().then(() => {
@@ -110,20 +111,16 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo URL</span>
+                                <span className="label-text">Photo URL (optional)</span>
                             </label>
                             <input
                                 type="name"
                                 placeholder="(Ex. https://www.example.com/xyz.jpeg)"
                                 name="photo"
                                 className="input input-bordered"
-                                required
                             />
                         </div>
                         <div className="form-control mt-6">
-                            {/* <button className="btn btn-primary text-white normal-case rounded-none">
-                                Register
-                            </button> */}
                             <input type="submit" value="Register" className="btn btn-primary text-white normal-case rounded-none" />
                         </div>
                         <h3 className="text-center my-2 text-sm">Or</h3>

@@ -1,11 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-import { useContext } from "react";
+import ReactHover, { Trigger, Hover } from "react-hover";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
 
-    const { user, logout } = useContext(AuthContext);
+    const [loggedUser, setLoggedUser] = useState(null);
+
+    const { user, logout, loading } = useContext(AuthContext);
+
+    useEffect( () => {
+        if(!loading) setLoggedUser(user);
+    }, [user, loading])
 
     const navLinks = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
@@ -15,6 +22,12 @@ const Navbar = () => {
         <li><NavLink to={"/myjobs"}>My Jobs</NavLink></li>
         <li><NavLink to={"/blogs"}>Blogs</NavLink></li>
     </>
+
+    const optionsCursorTrueWithMargin = {
+        followCursor: true,
+        shiftX: 20,
+        shiftY: 0
+    };
 
     return (
         <div className="navbar border-b-2 px-5 lg:px-32 font-semibold text-gray-600">
@@ -52,9 +65,16 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {!user ?
-                    <Link to={"/login"} className="btn btn-md btn-primary text-white normal-case rounded-none px-8">Login</Link> :
-                    <a onClick={logout} className="btn btn-md btn-primary text-white normal-case rounded-none px-8">Logout</a>
+                        <Link to={"/login"} className="btn btn-md btn-primary text-white normal-case rounded-none px-8">Login</Link> :
+                        <>
+                            <div className="tooltip tooltip-bottom" data-tip={`User Name: ${loggedUser?.displayName}`}>
+                                <img src={loggedUser?.photoURL} alt="" className="w-12 rounded-full mr-2" />
+                            </div>
+                            
+                            <a onClick={logout} className="btn btn-md btn-primary text-white normal-case rounded-none px-8">Logout</a>
+                        </>
                 }
+                {console.log(loggedUser)}
             </div>
         </div>
     );
