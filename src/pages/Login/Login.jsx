@@ -3,12 +3,12 @@ import titles from "../../titles/titles";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/googleicon.png";
 import loginImage from "../../assets/login.jpg"
 
 const Login = () => {
-    const { login, googleLogin } = useContext(AuthContext);
+    const { user, login, googleLogin } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -37,6 +37,8 @@ const Login = () => {
                 else navigate("/");
             });
     }
+
+    if(user) return <Navigate to={"/"}></Navigate>
 
     return (
         <div className="hero">

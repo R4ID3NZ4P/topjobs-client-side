@@ -13,6 +13,7 @@ import Blogs from "./pages/Blogs/Blogs"
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Error from "./pages/Error/Error";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/add",
-				element: <AddAJob></AddAJob>
+				element: <PrivateRoute><AddAJob></AddAJob></PrivateRoute>
 			},
 			{
 				path: "/myjobs",

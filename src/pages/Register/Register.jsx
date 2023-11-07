@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import titles from "../../titles/titles";
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
 import googleIcon from "../../assets/googleicon.png";
@@ -60,6 +60,8 @@ const Register = () => {
                 else navigate("/");
             });
     }
+
+    if(user) return <Navigate to={"/"}></Navigate>
 
     return (
         <div className="hero">
