@@ -2,15 +2,15 @@ import { Helmet } from "react-helmet";
 import titles from "../../titles/titles";
 
 
-const AddAJob = () => {
+const Login = () => {
     return (
         <div>
             <Helmet>
-                <title>{titles.add}</title>
+                <title>{titles.login}</title>
             </Helmet>
-            add a job
+            login
         </div>
     );
 };
 
-export default AddAJob;
+export default Login;
