@@ -1,6 +1,9 @@
+import { Link, useNavigate } from "react-router-dom";
+
 const Job = ({ data }) => {
 
     const {
+        _id,
         username,
         title,
         salary,
@@ -24,7 +27,7 @@ const Job = ({ data }) => {
             <td>{deadline}</td>
             <td>${salary}</td>
             <th>
-                <button className="btn btn-primary btn-outline normal-case btn-xs rounded-none text-white">Details</button>
+                <Link to={`/job/${_id}`} className="btn btn-primary btn-outline normal-case btn-xs rounded-none text-white">Details</Link>
             </th>
         </tr>
     );

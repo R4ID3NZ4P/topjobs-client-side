@@ -15,6 +15,7 @@ import Register from "./pages/Register/Register";
 import Error from "./pages/Error/Error";
 import PrivateRoute from "./routes/PrivateRoute";
 import axios from "axios";
+import JobDetails from "./pages/JobDetails/JobDetails";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
 			{
 				path: "/blogs",
 				element: <Blogs></Blogs>
+			},
+			{
+				path: "/job/:id",
+				element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
+				loader: ({params}) => axios.get(`http://localhost:5000/job/${params.id}`)
 			}
 		]
     },
