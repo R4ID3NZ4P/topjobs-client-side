@@ -32,8 +32,8 @@ const AllJobs = () => {
 
             <div className="flex justify-center items-center">
                 <div className="join mx-auto">
-                    <input onChange={handleChange} className="input input-bordered join-item" placeholder="Search Jobs"/>
-                    <button onClick={handleSearch} className="btn join-item rounded-r-lg btn-primary text-white normal-case">Search</button>
+                    <input onChange={handleChange} className="input input-bordered join-item rounded-none" placeholder="Search Jobs"/>
+                    <button onClick={handleSearch} className="btn join-item rounded-none btn-primary text-white normal-case">Search</button>
                 </div>
             </div>
 
