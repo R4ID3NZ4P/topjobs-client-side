@@ -12,11 +12,13 @@ import MyJobs from "./pages/MyJobs/MyJobs";
 import Blogs from "./pages/Blogs/Blogs"
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Error from "./pages/Error/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+		errorElement: <Error></Error>,
 		children: [
 			{
 				path: "/",

@@ -6,7 +6,8 @@ const titles = {
     applied: 'TopJobs | Applied Jobs',
     myjobs: 'TopJobs | My Jobs',
     login: 'TopJobs | Login',
-    register: 'TopJobs | Register'
+    register: 'TopJobs | Register',
+    error: 'TopJobs | Error 404'
   };
   
 export default titles;
