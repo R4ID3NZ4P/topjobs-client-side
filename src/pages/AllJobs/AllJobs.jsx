@@ -7,13 +7,20 @@ import Job from "./Job";
 const AllJobs = () => {
 
     const [jobs, setJobs] = useState([]);
+    const [search, setSearch] = useState("");
     const data = useLoaderData().data;
     useEffect(() => {
         if(data == null || data == []) return;
         setJobs(data);
     }, [data])
 
-
+    const handleChange = (e) => {
+        setSearch(e.target.value);
+    }
+    const handleSearch = () => {
+        const filtered = data.filter(job => job.title.toLowerCase().includes(search.toLowerCase()));
+        setJobs(filtered)
+    }
 
     return (
         <div className="px-10 lg:px-32">
@@ -22,6 +29,13 @@ const AllJobs = () => {
             </Helmet>
 
             <h1 className="text-center text-3xl font-bold my-8">All Jobs</h1>
+
+            <div className="flex justify-center items-center">
+                <div className="join mx-auto">
+                    <input onChange={handleChange} className="input input-bordered join-item" placeholder="Search Jobs"/>
+                    <button onClick={handleSearch} className="btn join-item rounded-r-lg btn-primary text-white normal-case">Search</button>
+                </div>
+            </div>
 
             <div className="overflow-x-auto my-6">
                 <table className="table">

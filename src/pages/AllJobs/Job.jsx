@@ -22,7 +22,7 @@ const Job = ({ data }) => {
                 {postdate}
             </td>
             <td>{deadline}</td>
-            <td>{salary}</td>
+            <td>${salary}</td>
             <th>
                 <button className="btn btn-primary btn-outline normal-case btn-xs rounded-none text-white">Details</button>
             </th>
