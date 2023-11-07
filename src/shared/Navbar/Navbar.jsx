@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-import ReactHover, { Trigger, Hover } from "react-hover";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -17,17 +16,15 @@ const Navbar = () => {
     const navLinks = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
         <li><NavLink to={"/all"}>All Jobs</NavLink></li>
-        <li><NavLink to={"/applied"}>Applied Jobs</NavLink></li>
-        <li><NavLink to={"/add"}>Add A Job</NavLink></li>
-        <li><NavLink to={"/myjobs"}>My Jobs</NavLink></li>
+        {
+            user ? <>
+                <li><NavLink to={"/applied"}>Applied Jobs</NavLink></li>
+                <li><NavLink to={"/add"}>Add A Job</NavLink></li>
+                <li><NavLink to={"/myjobs"}>My Jobs</NavLink></li></> :
+                <></>
+        }
         <li><NavLink to={"/blogs"}>Blogs</NavLink></li>
     </>
-
-    const optionsCursorTrueWithMargin = {
-        followCursor: true,
-        shiftX: 20,
-        shiftY: 0
-    };
 
     return (
         <div className="navbar border-b-2 px-5 lg:px-32 font-semibold text-gray-600">

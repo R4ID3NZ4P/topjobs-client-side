@@ -3,6 +3,10 @@ import titles from "../../titles/titles";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./AddAJob.css"
 
 
 const AddAJob = () => {
@@ -37,7 +41,12 @@ const AddAJob = () => {
         };
 
         console.log(job);
+        console.log(new Date(postdate).getTime());
+        console.log(new Date(deadline).getTime());
     };
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [startDate2, setStartDate2] = useState(new Date());
 
     return (
         <div className="px-10 lg:px-32">
@@ -122,10 +131,16 @@ const AddAJob = () => {
                     <div className="form-control">
                         <label className="input-group">
                             <span>Date</span>
-                            <input
+                            {/* <input
                                 type="date"
                                 placeholder="Posting Date"
                                 className="input input-bordered w-full"
+                                name="postdate"
+                            /> */}
+                            <DatePicker 
+                                className="input input-bordered input-md w-full rounded-l-none" 
+                                selected={startDate} 
+                                onChange={(date) => setStartDate(date)} 
                                 name="postdate"
                             />
                         </label>
@@ -134,10 +149,16 @@ const AddAJob = () => {
                 <div className="form-control">
                     <label className="input-group input-group-md">
                         <span>Deadline</span>
-                        <input
+                        {/* <input
                             type="date"
                             placeholder="Application Deadline"
                             className="input input-bordered input-md w-full"
+                            name="deadline"
+                        /> */}
+                        <DatePicker 
+                            className="input input-bordered input-md w-full rounded-l-none" 
+                            selected={startDate2} 
+                            onChange={(date) => setStartDate2(date)} 
                             name="deadline"
                         />
                     </label>

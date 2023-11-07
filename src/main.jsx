@@ -14,6 +14,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Error from "./pages/Error/Error";
 import PrivateRoute from "./routes/PrivateRoute";
+import axios from "axios";
 
 const router = createBrowserRouter([
     {
@@ -35,11 +36,12 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/all",
-				element: <AllJobs></AllJobs>
+				element: <AllJobs></AllJobs>,
+				loader: () => axios.get("http://localhost:5000/jobs")
 			},
 			{
 				path: "/applied",
-				element: <AppliedJobs></AppliedJobs>
+				element: <PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>
 			},
 			{
 				path: "/add",
@@ -47,7 +49,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/myjobs",
-				element: <MyJobs></MyJobs>
+				element: <PrivateRoute><MyJobs></MyJobs></PrivateRoute>
 			},
 			{
 				path: "/blogs",
