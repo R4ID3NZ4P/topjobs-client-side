@@ -6,3 +6,7 @@
 .fontInter {
     font-family: 'Inter', sans-serif;
 }
+
+.active{
+    @apply block text-primary bg-white rounded md:bg-transparent;
+}

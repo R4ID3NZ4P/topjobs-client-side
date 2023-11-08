@@ -9,9 +9,7 @@ const JobCard = ({ data, isVisible }) => {
         username,
         image,
         title,
-        category,
         salary,
-        description,
         postdate,
         deadline,
         applicants
