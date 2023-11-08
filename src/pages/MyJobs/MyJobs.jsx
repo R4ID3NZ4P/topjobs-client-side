@@ -32,14 +32,15 @@ const MyJobs = () => {
     }
 
     return (
-        <div className="px-10 lg:px-32 mb-64">
+        <div className="px-10 lg:px-32 mb-64 min-h-[40vh]">
             <Helmet>
                 <title>{titles.myjobs}</title>
             </Helmet>
 
             <h1 className="text-3xl font-bold text-center my-6">My Jobs</h1>
 
-            <table className="table">
+            <div className="overflow-x-auto my-6">
+                <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
@@ -59,6 +60,7 @@ const MyJobs = () => {
                         myJobs.map(job => <MyJob key={job._id} data={job} handleDelete={handleDelete}></MyJob>)}
                     </tbody>
                 </table>
+            </div>
         </div>
     );
 };

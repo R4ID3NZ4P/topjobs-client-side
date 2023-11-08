@@ -87,9 +87,9 @@ const JobDetails = () => {
                         <p className="font-semibold">{deadline}</p>
                     </div>
 
-                    <button onClick={()=>document.getElementById('my_modal_5').showModal()} className="btn btn-primary btn-block rounded-none text-white">Apply</button>
+                    <button onClick={()=>document.getElementById(`my_modal_${_id}`).showModal()} className="btn btn-primary btn-block rounded-none text-white">Apply</button>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
-                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                    <dialog id={`my_modal_${_id}`} className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
                         <h3 className="font-bold text-lg text-center">Application Form</h3>
                         <form onSubmit={handleApply}>

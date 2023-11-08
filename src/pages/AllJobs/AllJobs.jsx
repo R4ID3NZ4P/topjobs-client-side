@@ -23,12 +23,12 @@ const AllJobs = () => {
     }
 
     return (
-        <div className="px-10 lg:px-32">
+        <div className="px-10 lg:px-32 min-h-[80vh]">
             <Helmet>
                 <title>{titles.all}</title>
             </Helmet>
 
-            <h1 className="text-center text-3xl font-bold my-8">All Jobs</h1>
+            <h1 className="text-center text-3xl font-bold my-6">All Jobs</h1>
 
             <div className="flex justify-center items-center">
                 <div className="join mx-auto">
