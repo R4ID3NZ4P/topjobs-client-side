@@ -1,8 +1,12 @@
-# React + Vite
+# TopJobs Project
+### This project is live [here](https://b8a11-topjobs-3e758.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+### This simple project offers following features:
+* Email and Password Authentication (Google Account authentication also implemented).
+* Password strength check (checks for if the password has at least 6 characters, at least   one uppercase letter and at least one special character) during user registration.
+* Private routes which can only be accessed by a registered user.
+* Functional "My Jobs" feature for each user to show the jobs that a user has created.
+* Functional Search by job title feature on the All Jobs page.
+* Functional Filter by job category feature on Applied Jobs page.
+* Downloadable PDF of the summary of applied jobs. 
