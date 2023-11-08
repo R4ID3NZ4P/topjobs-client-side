@@ -53,7 +53,8 @@ const AllJobs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {jobs.map(job => <Job key={job._id} data={job}></Job>)}
+                        { jobs.length == 0 ? <tr><td colSpan={6} className="text-center">No matching result found!</td></tr> :
+                        jobs.map(job => <Job key={job._id} data={job}></Job>)}
                     </tbody>
                 </table>
             </div>

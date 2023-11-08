@@ -24,7 +24,7 @@ const JobDetails = () => {
 
     const { user } = useContext(AuthContext);
 
-    const handleApply = async e => {
+    const handleApply = e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -50,11 +50,14 @@ const JobDetails = () => {
             jobId: _id
         }
 
-        const result = await axios.post("http://localhost:5000/apply", applicationForm);
-        if(result.data.insertedId) {
-            toast("Applied Successfully!");
-            navigate(-1);
-        }
+        axios.post("http://localhost:5000/apply", applicationForm)
+        .then(result => {
+            if(result.data.insertedId) {
+                toast("Applied Successfully!");
+                navigate(-1);
+            }
+        })
+        .catch(error => toast(error));
     }
 
     return (

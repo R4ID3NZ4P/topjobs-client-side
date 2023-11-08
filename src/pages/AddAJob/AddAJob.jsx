@@ -7,6 +7,8 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./AddAJob.css"
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const AddAJob = () => {
@@ -40,9 +42,16 @@ const AddAJob = () => {
             applicants
         };
 
+        
         console.log(job);
         console.log(new Date(postdate).getTime());
         console.log(new Date(deadline).getTime());
+        axios.post("http://localhost:5000/add", job).then(result => {
+            if(result.data.insertedId) {
+                toast("Job Posted Successfully!");
+                navigate("/all");
+            }
+        }).catch(error => toast(error));
     };
 
     const [startDate, setStartDate] = useState(new Date());
