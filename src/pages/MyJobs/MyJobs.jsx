@@ -1,14 +1,51 @@
 import { Helmet } from "react-helmet";
 import titles from "../../titles/titles";
-
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import MyJob from "./MyJob";
 
 const MyJobs = () => {
+
+    const { user } = useContext(AuthContext);
+    const [myJobs, setMyJobs] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost:5000/myjobs?username=${user?.displayName}`)
+        .then(result => {
+            setMyJobs(result.data);
+        });
+    }, [user])
+
     return (
-        <div>
+        <div className="px-10 lg:px-32 mb-64">
             <Helmet>
                 <title>{titles.myjobs}</title>
             </Helmet>
-            My jobs
+
+            <h1 className="text-3xl font-bold text-center my-6">My Jobs</h1>
+
+            <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>Job Title</th>
+                            <th>Posting Date</th>
+                            <th>Application Deadline</th>
+                            <th>Salary Range</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { myJobs.length == 0 ? <tr><td colSpan={7} className="text-center">No posts found!</td></tr> :
+                        myJobs.map(job => <MyJob key={job._id} data={job}></MyJob>)}
+                    </tbody>
+                </table>
         </div>
     );
 };

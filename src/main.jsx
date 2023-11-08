@@ -16,6 +16,7 @@ import Error from "./pages/Error/Error";
 import PrivateRoute from "./routes/PrivateRoute";
 import axios from "axios";
 import JobDetails from "./pages/JobDetails/JobDetails";
+import UpdateJob from "./pages/UpdateJob/UpdateJob";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
 			{
 				path: "/job/:id",
 				element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
+				loader: ({params}) => axios.get(`http://localhost:5000/job/${params.id}`)
+			},
+			{
+				path: "/myjobs/:id",
+				element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
 				loader: ({params}) => axios.get(`http://localhost:5000/job/${params.id}`)
 			}
 		]
