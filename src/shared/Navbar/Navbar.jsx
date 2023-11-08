@@ -71,7 +71,6 @@ const Navbar = () => {
                             <a onClick={logout} className="btn btn-md btn-primary text-white normal-case rounded-none px-8">Logout</a>
                         </>
                 }
-                {console.log(loggedUser)}
             </div>
         </div>
     );
