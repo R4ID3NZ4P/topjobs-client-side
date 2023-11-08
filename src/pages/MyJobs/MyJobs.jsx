@@ -6,6 +6,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import MyJob from "./MyJob";
+import { toast } from "react-toastify";
 
 const MyJobs = () => {
 
@@ -17,6 +18,18 @@ const MyJobs = () => {
             setMyJobs(result.data);
         });
     }, [user])
+
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:5000/myjobs/${id}`)
+            .then(result => {
+                if(result.data.deletedCount > 0) {
+                    toast("Post Deleted Successfully!");
+                    const filtered = myJobs.filter(job => job._id !== id);
+                    setMyJobs(filtered);
+                }
+            })
+            .catch(error => toast(error));
+    }
 
     return (
         <div className="px-10 lg:px-32 mb-64">
@@ -43,7 +56,7 @@ const MyJobs = () => {
                     </thead>
                     <tbody>
                         { myJobs.length == 0 ? <tr><td colSpan={7} className="text-center">No posts found!</td></tr> :
-                        myJobs.map(job => <MyJob key={job._id} data={job}></MyJob>)}
+                        myJobs.map(job => <MyJob key={job._id} data={job} handleDelete={handleDelete}></MyJob>)}
                     </tbody>
                 </table>
         </div>
