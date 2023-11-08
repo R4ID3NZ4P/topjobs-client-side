@@ -28,8 +28,8 @@ const MyJob = ({ data, handleDelete }) => {
             <td>${salary}</td>
             <th colSpan={2}>
                 <div className="mx-auto">
-                    <Link to={`/myjobs/${_id}`} className="btn btn-primary btn-outline normal-case btn-xs rounded-none text-white mr-5">Update</Link>
-                    <button onClick={()=>document.getElementById(`my_modal_${_id}`).showModal()} className="btn btn-error btn-outline normal-case btn-xs rounded-none text-white">Delete</button>
+                    <Link to={`/myjobs/${_id}`} className="btn btn-warning normal-case btn-xs rounded-none text-white mr-5">Update</Link>
+                    <button onClick={()=>document.getElementById(`my_modal_${_id}`).showModal()} className="btn btn-error normal-case btn-xs rounded-none text-white">Delete</button>
                 </div>
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
                 <dialog id={`my_modal_${_id}`} className="modal modal-bottom sm:modal-middle">
