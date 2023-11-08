@@ -50,7 +50,7 @@ const JobDetails = () => {
             jobId: _id
         }
 
-        axios.post("http://localhost:5000/apply", applicationForm)
+        axios.post("https://b8a11-server-side-mu.vercel.app/apply", applicationForm)
         .then(result => {
             if(result.data.insertedId) {
                 toast("Applied Successfully!");

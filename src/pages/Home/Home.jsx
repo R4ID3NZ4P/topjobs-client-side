@@ -5,10 +5,19 @@ import 'react-tabs/style/react-tabs.css';
 import { Link, useLoaderData } from "react-router-dom";
 import JobCard from "./JobCard";
 import { AnimatePresence, motion } from "framer-motion"
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Home = () => {
 
     const data = useLoaderData().data;
+
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        if (data != null) setLoading(false);
+    }, [data]);
+
+    if (loading) return <div className="w-full h-[50vh] flex justify-center my-40"><span className="loading loading-infinity w-20"></span></div>
 
     return (
         <div className="px-10 lg:px-32 my-6">

@@ -12,13 +12,15 @@ const AppliedJobs = () => {
 
     const [applied, setApplied] = useState([]);
     const [filtered, setFiltered] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/applied/${user?.displayName}`)
+        axios.get(`https://b8a11-server-side-mu.vercel.app/applied/${user?.displayName}`)
             .then(result => {
                 setApplied(result.data);
                 setFiltered(result.data);
+                setLoading(false);
             })
             .catch(error => toast(error));
     }, [user]);
@@ -34,6 +36,8 @@ const AppliedJobs = () => {
     }
 
     const { toPDF, targetRef } = usePDF({filename: 'summary.pdf'});
+
+    if (loading) return <div className="w-full h-[50vh] flex justify-center my-40"><span className="loading loading-infinity w-20"></span></div>
 
     return (
         <div className="px-10 lg:px-32 min-h-[80vh]">

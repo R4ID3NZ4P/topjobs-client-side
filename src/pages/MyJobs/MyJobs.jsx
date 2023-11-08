@@ -12,15 +12,17 @@ const MyJobs = () => {
 
     const { user } = useContext(AuthContext);
     const [myJobs, setMyJobs] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios.get(`http://localhost:5000/myjobs?username=${user?.displayName}`)
+        axios.get(`https://b8a11-server-side-mu.vercel.app/myjobs?username=${user?.displayName}`)
         .then(result => {
             setMyJobs(result.data);
+            setLoading(false);
         });
     }, [user])
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/myjobs/${id}`)
+        axios.delete(`https://b8a11-server-side-mu.vercel.app/myjobs/${id}`)
             .then(result => {
                 if(result.data.deletedCount > 0) {
                     toast("Post Deleted Successfully!");
@@ -30,6 +32,8 @@ const MyJobs = () => {
             })
             .catch(error => toast(error));
     }
+
+    if (loading) return <div className="w-full h-[50vh] flex justify-center my-40"><span className="loading loading-infinity w-20"></span></div>
 
     return (
         <div className="px-10 lg:px-32 mb-64 min-h-[40vh]">

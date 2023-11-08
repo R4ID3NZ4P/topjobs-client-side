@@ -8,10 +8,12 @@ const AllJobs = () => {
 
     const [jobs, setJobs] = useState([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
     const data = useLoaderData().data;
     useEffect(() => {
         if(data == null || data == []) return;
         setJobs(data);
+        setLoading(false);
     }, [data])
 
     const handleChange = (e) => {
@@ -21,6 +23,8 @@ const AllJobs = () => {
         const filtered = data.filter(job => job.title.toLowerCase().includes(search.toLowerCase()));
         setJobs(filtered)
     }
+
+    if (loading) return <div className="w-full h-[50vh] flex justify-center my-40"><span className="loading loading-infinity w-20"></span></div>
 
     return (
         <div className="px-10 lg:px-32 min-h-[80vh]">
