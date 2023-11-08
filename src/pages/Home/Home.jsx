@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import titles from "../../titles/titles";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import JobCard from "./JobCard";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <h1 className="text-3xl font-bold text-center mb-8">Find Suitable Jobs From Various Companies</h1>
+            <h1 className="text-3xl font-bold text-center mb-8">Explore Interesting Jobs</h1>
             <Tabs>
                 <TabList>
                     <Tab>All Jobs</Tab>
@@ -77,6 +77,19 @@ const Home = () => {
                     </div>
                 </TabPanel>
             </Tabs>
+
+            {/* Need to hire section  */}
+            <div className="hero min-h-[40vh] bg-primary rounded-2xl mt-12 glass">
+                <div className="hero-overlay bg-opacity-60 rounded-2xl"></div>
+                <div className="hero-content text-center text-white">
+                    <div className="max-w-md">
+                    <h1 className="mb-5 text-5xl font-bold text-warning">Need To Hire?</h1>
+                    <p className="mb-5">Let our matching technology find you qualified
+                        candidates quickly.</p>
+                    <Link to={"/add"} className="btn btn-primary normal-case text-white">Post Jobs for Free</Link>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

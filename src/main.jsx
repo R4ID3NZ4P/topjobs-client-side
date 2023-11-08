@@ -75,7 +75,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
 		<AuthProvider>
-			<RouterProvider router={router} />
+			<div className="fontInter">
+				<RouterProvider router={router} />
+			</div>	
 		</AuthProvider>
 	</React.StrictMode>
 );
