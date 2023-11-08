@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { usePDF } from 'react-to-pdf';
 
 const AppliedJobs = () => {
 
@@ -32,6 +33,8 @@ const AppliedJobs = () => {
         }
     }
 
+    const { toPDF, targetRef } = usePDF({filename: 'summary.pdf'});
+
     return (
         <div className="px-10 lg:px-32 min-h-[80vh]">
             <Helmet>
@@ -50,7 +53,7 @@ const AppliedJobs = () => {
                 </select>
             </div>
             <div className="overflow-x-auto my-6">
-                <table className="table">
+                <table className="table" ref={targetRef}>
                     {/* head */}
                     <thead>
                         <tr>
@@ -67,6 +70,7 @@ const AppliedJobs = () => {
                     <tbody>
                         { filtered.length == 0 ? <tr><td colSpan={6} className="text-center">You haven&apos;t applied to any job yet!</td></tr> :
                         filtered.map(job => <AppliedJob key={job._id} data={job}></AppliedJob>)}
+                        {filtered.length != 0 ? <tr><td colSpan={6} className="text-center"><button onClick={() => toPDF()} className="btn normal-case">Download Summary</button></td></tr> : <></> }
                     </tbody>
                 </table>
             </div>
