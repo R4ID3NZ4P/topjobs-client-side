@@ -10,3 +10,4 @@
 * Functional Search by job title feature on the All Jobs page.
 * Functional Filter by job category feature on Applied Jobs page.
 * Downloadable PDF of the summary of applied jobs. 
+* JWT token verification feature on My Jobs page and Applied Jobs page. 
