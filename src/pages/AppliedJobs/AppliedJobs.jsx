@@ -16,7 +16,7 @@ const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/applied/${user?.displayName}`, {withCredentials: true})
+        axios.get(`https://b8a11-server-side-mu.vercel.app/applied/${user?.displayName}`, {withCredentials: true})
             .then(result => {
                 setApplied(result.data);
                 setFiltered(result.data);

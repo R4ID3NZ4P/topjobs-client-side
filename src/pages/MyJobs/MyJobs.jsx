@@ -14,7 +14,7 @@ const MyJobs = () => {
     const [myJobs, setMyJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios.get(`http://localhost:5000/myjobs?username=${user?.displayName}`, {withCredentials: true})
+        axios.get(`https://b8a11-server-side-mu.vercel.app/myjobs?username=${user?.displayName}`, {withCredentials: true})
         .then(result => {
             setMyJobs(result.data);
             setLoading(false);
@@ -27,7 +27,7 @@ const MyJobs = () => {
     }, [user])
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/myjobs/${id}`)
+        axios.delete(`https://b8a11-server-side-mu.vercel.app/myjobs/${id}`)
             .then(result => {
                 if(result.data.deletedCount > 0) {
                     toast("Post Deleted Successfully!");

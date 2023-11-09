@@ -48,11 +48,11 @@ const AuthProvider = ({ children }) => {
             const data = {name};
             setLoading(false);
             if(currentUser) {
-                axios.post("http://localhost:5000/jwt", data, {withCredentials: true}).then(res => console.log(res.data));
+                axios.post("https://b8a11-server-side-mu.vercel.app/jwt", data, {withCredentials: true}).then(res => console.log(res.data));
             }
             else {
                 console.log(currentUser);
-                axios.post("http://localhost:5000/logout", data, {withCredentials: true}).then(res => console.log(res.data));
+                axios.post("https://b8a11-server-side-mu.vercel.app/logout", data, {withCredentials: true}).then(res => console.log(res.data));
             }
         })
 
