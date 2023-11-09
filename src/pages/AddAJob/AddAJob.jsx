@@ -46,7 +46,7 @@ const AddAJob = () => {
         console.log(job);
         console.log(new Date(postdate).getTime());
         console.log(new Date(deadline).getTime());
-        axios.post("https://b8a11-server-side-mu.vercel.app/add", job).then(result => {
+        axios.post("http://localhost:5000/add", job).then(result => {
             if(result.data.insertedId) {
                 toast("Job Posted Successfully!");
                 navigate("/all");

@@ -27,7 +27,7 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home></Home>,
-				loader: () => axios.get("https://b8a11-server-side-mu.vercel.app/jobs")
+				loader: () => axios.get("http://localhost:5000/jobs")
 			},
 			{
 				path: "/login",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
 			{
 				path: "/all",
 				element: <AllJobs></AllJobs>,
-				loader: () => axios.get("https://b8a11-server-side-mu.vercel.app/jobs")
+				loader: () => axios.get("http://localhost:5000/jobs")
 			},
 			{
 				path: "/applied",
@@ -61,12 +61,12 @@ const router = createBrowserRouter([
 			{
 				path: "/job/:id",
 				element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-				loader: ({params}) => axios.get(`https://b8a11-server-side-mu.vercel.app/job/${params.id}`)
+				loader: ({params}) => axios.get(`http://localhost:5000/job/${params.id}`)
 			},
 			{
 				path: "/myjobs/:id",
 				element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
-				loader: ({params}) => axios.get(`https://b8a11-server-side-mu.vercel.app/job/${params.id}`)
+				loader: ({params}) => axios.get(`http://localhost:5000/job/${params.id}`)
 			}
 		]
     },

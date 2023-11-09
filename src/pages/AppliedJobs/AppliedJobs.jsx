@@ -16,13 +16,17 @@ const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`https://b8a11-server-side-mu.vercel.app/applied/${user?.displayName}`)
+        axios.get(`http://localhost:5000/applied/${user?.displayName}`, {withCredentials: true})
             .then(result => {
                 setApplied(result.data);
                 setFiltered(result.data);
                 setLoading(false);
             })
-            .catch(error => toast(error));
+            .catch(error => { 
+                toast(error.code);
+                setApplied([]);
+                setLoading(false);
+            });
     }, [user]);
 
     const handleChange = e => {

@@ -56,7 +56,7 @@ const UpdateJob = () => {
         console.log(job);
         console.log(new Date(postdate).getTime());
         console.log(new Date(deadline).getTime());
-        axios.put(`https://b8a11-server-side-mu.vercel.app/myjobs/${_id}`, job)
+        axios.put(`http://localhost:5000/myjobs/${_id}`, job)
             .then(result => {
                 if(result.data.modifiedCount > 0) {
                     toast("Job Updated Successfully!");

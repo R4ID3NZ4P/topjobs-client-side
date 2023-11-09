@@ -33,13 +33,13 @@ const JobDetails = () => {
 
         if(name == username) {
             toast("You can't apply to your own posts!");
-            document.getElementById('my_modal_5').close();
+            document.getElementById(`my_modal_${_id}`).close();
             return;
         }
 
         if(new Date(deadline).getTime() < new Date().getTime()) {
             toast("You are past the deadline!");
-            document.getElementById('my_modal_5').close();
+            document.getElementById(`my_modal_${_id}`).close();
             return;
         }
 
@@ -50,7 +50,7 @@ const JobDetails = () => {
             jobId: _id
         }
 
-        axios.post("https://b8a11-server-side-mu.vercel.app/apply", applicationForm)
+        axios.post("http://localhost:5000/apply", applicationForm)
         .then(result => {
             if(result.data.insertedId) {
                 toast("Applied Successfully!");
